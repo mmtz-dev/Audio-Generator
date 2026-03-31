@@ -1,0 +1,36 @@
+services:
+  audiogen:
+    build: .
+    image: audiogen:latest
+    container_name: audiogen
+    ports:
+      - "${PORT:-8000}:8000"
+    volumes:
+      # Model weights cache (persist across rebuilds)
+      - model-cache:/models
+      # Generated audio output
+      - ./outputs:/app/outputs
+      # Trained models from Audio-Trainer (configurable path)
+      - ${TRAINED_MODELS_DIR:-./checkpoints}:/app/checkpoints:ro
+    environment:
+      - AUDIOGEN_DEVICE=${DEVICE:-cuda}
+      - AUDIOGEN_MODELS_DIR=/models
+      - AUDIOGEN_OUTPUTS_DIR=/app/outputs
+      - AUDIOGEN_TRAINED_MODELS_DIR=/app/checkpoints
+      - HF_HOME=/models/huggingface
+      - TORCH_HOME=/models/torch
+      - HF_TOKEN=${HF_TOKEN:-}
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    shm_size: "8gb"
+    restart: unless-stopped
+
+volumes:
+  model-cache:
+    driver: local

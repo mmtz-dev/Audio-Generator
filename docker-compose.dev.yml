@@ -1,0 +1,11 @@
+services:
+  audiogen:
+    volumes:
+      # Mount source for hot reload
+      - ./src:/app/src
+      - model-cache:/models
+      - ./outputs:/app/outputs
+      - ${TRAINED_MODELS_DIR:-./checkpoints}:/app/checkpoints:ro
+    command: ["serve", "--reload"]
+    environment:
+      - AUDIOGEN_DEBUG=1
