@@ -1,6 +1,6 @@
 # Audio Generator — Research Findings
 
-Project goal: Generate audio including voice cloning and music generation using open-source, locally-runnable tools.
+Project goal: Generate audio — including voice cloning, music, sound effects, foley, and environmental audio — using open-source, locally-runnable tools.
 
 ---
 
@@ -39,6 +39,34 @@ Project goal: Generate audio including voice cloning and music generation using 
 
 ---
 
+## Sound Effects & General Audio
+
+| Tool | Standout Feature | License |
+|------|-----------------|---------|
+| **Stable Audio Open 1.0** (Stability AI) | Up to 47s SFX/foley/ambient, fine-tunable on custom audio | Open |
+| **AudioGen** (Meta AudioCraft) | Text-to-environmental sounds, part of AudioCraft suite | MIT |
+| **AudioLDM 2** | Text-to-audio for speech, SFX, and music; style transfer & inpainting | Open |
+| **Tango 2** | Text-to-audio with DPO alignment, strong on animal/nature/human sounds | Open |
+
+---
+
+## Foley & Video-Synced Audio
+
+| Tool | Standout Feature | License |
+|------|-----------------|---------|
+| **HunyuanVideo-Foley** (Tencent) | 48 kHz foley synced to video, SOTA fidelity & alignment | Open |
+| **FoleyCrafter** (OpenMMLab) | Video-to-audio with onset-based temporal sync, text-controllable | Open |
+
+---
+
+## Unified Audio Toolkit
+
+| Tool | Standout Feature | License |
+|------|-----------------|---------|
+| **Amphion** (OpenMMLab) | Single framework for TTS, text-to-audio, singing voice conversion | MIT |
+
+---
+
 ## All-in-One
 
 - **TTS-WebUI** — Single Gradio/React UI bundling MusicGen, RVC, Demucs, Stable Audio, and many TTS engines in one local app.
@@ -51,3 +79,6 @@ Project goal: Generate audio including voice cloning and music generation using 
 - **Kokoro TTS** is the go-to if you need CPU-only.
 - **RVC + GPT-SoVITS** dominate the voice cloning community.
 - **ACE-Step** and **DiffRhythm** are the cutting-edge music generation picks for local use.
+- **Tango 2** and **Stable Audio Open** are the top picks for local sound effect generation.
+- **HunyuanVideo-Foley** leads for video-synced foley.
+- **AudioCraft** (Meta) covers both music (MusicGen) and sound effects (AudioGen) in one MIT-licensed suite.
