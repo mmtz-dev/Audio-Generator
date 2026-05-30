@@ -4,7 +4,7 @@ services:
     image: audiogen:latest
     container_name: audiogen
     ports:
-      - "${PORT:-8000}:8000"
+      - "${PORT:-7870}:8000"
     volumes:
       # Model weights cache (persist across rebuilds)
       - model-cache:/models
